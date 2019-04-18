@@ -1,6 +1,7 @@
 import Simplex from './../app/models/Simplex';
 import { separaVariaveis } from './../helpers/simplexHelper';
 import { simplex } from '../services/simplexService';
+
 export const Post = async (req, res) => {
     if(req.body === null){
         res.status(418).json({
