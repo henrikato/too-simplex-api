@@ -30,7 +30,7 @@ app.use(express.static('src'));
 app.use('/', Simplex);
 
 //Definindo a porta via arquivo de configuração JSON
-var port = config.PORT;
+var port = process.env.PORT || config.PORT;
 
 //Diz para a aplicação iniciar e escutar requisições na porta parametrizada
 app.listen(port, () => {
