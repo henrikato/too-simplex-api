@@ -19,7 +19,8 @@
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "request": "^2.88.0",
-    "simple-simplex": "^1.0.1"
+    "simple-simplex": "^1.0.1",
+    "babel-register": "^6.26.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
