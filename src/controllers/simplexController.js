@@ -31,11 +31,7 @@ export const Post = async (req, res) => {
 
         simplex(result, baseSimplex.numIteracoes);
 
-        res.status(200).json({
-            resultado: result,
-            resultadoFinal: result.tableau,
-            z: result.tableau[0][0]
-        });
+        res.status(200).json(result);
     } catch (error) {
         res.status(422).json({
             message: "O que vc tá fazendo?",
