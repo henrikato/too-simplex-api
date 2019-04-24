@@ -4,20 +4,20 @@ import { simplex } from '../services/simplexService';
 
 export const Post = async (req, res) => {
     if(req.body === null){
-        res.status(418).json({
+        res.status(422).json({
             mensagem: "Existem dados que não foram informados. Tente novamente mais tarde."
         });
     }
-    var base = req.body;
 
+    var base = req.body.dadosOperacao;
     try {
         const baseSimplex = new Simplex(
             base.numVariaveis,
-            base.numIteracoes,
+            base.numMaxIteracoes,
             base.numRestricoes,
-            base.operacao
+            base.metodoOperacao
         );
-        const desmontaRestricoes =  separaVariaveis(base.restricoes);
+        const desmontaRestricoes =  separaVariaveis(req.body.restricoes);
         baseSimplex.variaveis = desmontaRestricoes.valores;
         baseSimplex.restricoes = desmontaRestricoes.operadores;
 
@@ -34,10 +34,10 @@ export const Post = async (req, res) => {
         res.status(200).json({
             resultado: result,
             resultadoFinal: result.tableau,
-            z: `Z = ${result.tableau[0][0]}`
+            z: result.tableau[0][0]
         });
     } catch (error) {
-        res.status(418).json({
+        res.status(422).json({
             message: "O que vc tá fazendo?",
             erro: error.message
         })

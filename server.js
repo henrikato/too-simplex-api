@@ -1,11 +1,11 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import { urlencoded, json } from 'body-parser';
 
 const app = express();
 
 //Configuração do server para usar o body-parser
-app.use(bodyParser.urlencoded({ extended: true }))
-    .use(bodyParser.json())
+app.use(urlencoded({ extended: true }))
+    .use(json())
     .set('view engine', 'ejs')
     .set('views', config.TEMPLATES_FOLDER);
 
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin');
+    res.setHeader('Access-Control-Allow-Headers', '*');
 
     next();
 })
