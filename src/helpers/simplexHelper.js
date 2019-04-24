@@ -1,19 +1,20 @@
 import * as lodash from 'lodash';
 
-export const separaVariaveis = restricoes => {   
-    const valores = [];
+export const parseVariaveis = restricoes => {   
+    const valores = [ [0] ];
     const operadores = [];
-    const valoresFinais = [];
 
     lodash.map(restricoes, restricao => {
-        const arr = [];
+        const arr = [restricao.valorOperacao];
         lodash.map(restricao.variaveis, variavel => {
             arr.push(variavel.valor)
+            if(valores[0].length <= restricao.variaveis.length){
+                valores[0].push(-1);
+            }
         })
         valores.push(arr);
         operadores.push("<=");
-        valoresFinais.push(restricao.valorOperacao);
     })
 
-    return { valores, operadores, valoresFinais };
+    return { valores, operadores };
 }

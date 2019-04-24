@@ -1,5 +1,5 @@
 import Simplex from './../app/models/Simplex';
-import { separaVariaveis } from './../helpers/simplexHelper';
+import { parseVariaveis } from './../helpers/simplexHelper';
 import { simplex } from '../services/simplexService';
 
 export const Post = async (req, res) => {
@@ -12,15 +12,15 @@ export const Post = async (req, res) => {
     var base = req.body.dadosOperacao;
     try {
         const baseSimplex = new Simplex(
-            base.numVariaveis,
+            ++base.numVariaveis,
             base.numMaxIteracoes,
-            base.numRestricoes,
+            ++base.numRestricoes,
             base.metodoOperacao
         );
-        const desmontaRestricoes =  separaVariaveis(req.body.restricoes);
-        baseSimplex.variaveis = desmontaRestricoes.valores;
-        baseSimplex.restricoes = desmontaRestricoes.operadores;
-
+        const parseRestricoes = parseVariaveis(req.body.restricoes);
+        baseSimplex.variaveis = parseRestricoes.valores;
+        baseSimplex.restricoes = parseRestricoes.operadores;
+        
         var result = {
             m: baseSimplex.numRestricoes,
             n: baseSimplex.numVariaveis,
