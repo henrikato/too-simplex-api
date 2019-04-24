@@ -178,7 +178,6 @@ export const simplex = (tab, iteracoes) => {
                 }
                 pivot_on(tab, pivot_row, pivot_col);
             }
-            console.log("tabela:", tab);
             passoapasso.push(createCopy(tab));
         } while (++loop);
         tab.passoapasso = passoapasso;
