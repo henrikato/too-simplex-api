@@ -1,6 +1,6 @@
 import Simplex from './../app/models/Simplex';
 import { parseVariaveis } from './../helpers/simplexHelper';
-import { simplex } from '../services/simplexService';
+import { simplex, getSensibilityTable } from '../services/simplexService';
 
 export const Post = async (req, res) => {
     if(req.body === null){
@@ -21,7 +21,7 @@ export const Post = async (req, res) => {
         baseSimplex.variaveis = parseRestricoes.valores;
         baseSimplex.restricoes = parseRestricoes.operadores;
         
-        var result = {
+        var tabelaSimplex = {
             m: baseSimplex.numRestricoes,
             n: baseSimplex.numVariaveis,
             tableau: baseSimplex.variaveis,
@@ -29,9 +29,13 @@ export const Post = async (req, res) => {
             max: baseSimplex.operacao
         };
 
-        simplex(result, baseSimplex.numIteracoes);
+        simplex(tabelaSimplex, baseSimplex.numIteracoes);
+        var sensibilidade = getSensibilityTable(tabelaSimplex);
 
-        res.status(200).json(result);
+        res.status(200).json({
+            result: tabelaSimplex,
+            sensibilidade
+        });
     } catch (error) {
         res.status(422).json({
             message: "O que vc tá fazendo?",
