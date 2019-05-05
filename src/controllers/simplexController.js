@@ -1,27 +1,27 @@
 import Simplex from './../app/models/Simplex';
-import { separaVariaveis } from './../helpers/simplexHelper';
-import { simplex } from '../services/simplexService';
+import { parseVariaveis } from './../helpers/simplexHelper';
+import { simplex, getSensibilityTable } from '../services/simplexService';
 
 export const Post = async (req, res) => {
     if(req.body === null){
-        res.status(418).json({
+        res.status(422).json({
             mensagem: "Existem dados que não foram informados. Tente novamente mais tarde."
         });
     }
-    var base = req.body;
 
+    var base = req.body.dadosOperacao;
     try {
         const baseSimplex = new Simplex(
-            base.numVariaveis,
-            base.numIteracoes,
-            base.numRestricoes,
-            base.operacao
+            ++base.numVariaveis,
+            base.numMaxIteracoes,
+            ++base.numRestricoes,
+            base.metodoOperacao
         );
-        const desmontaRestricoes =  separaVariaveis(base.restricoes);
-        baseSimplex.variaveis = desmontaRestricoes.valores;
-        baseSimplex.restricoes = desmontaRestricoes.operadores;
-
-        var result = {
+        const parseRestricoes = parseVariaveis(req.body.restricoes);
+        baseSimplex.variaveis = parseRestricoes.valores;
+        baseSimplex.restricoes = parseRestricoes.operadores;
+        
+        var tabelaSimplex = {
             m: baseSimplex.numRestricoes,
             n: baseSimplex.numVariaveis,
             tableau: baseSimplex.variaveis,
@@ -29,15 +29,15 @@ export const Post = async (req, res) => {
             max: baseSimplex.operacao
         };
 
-        simplex(result, baseSimplex.numIteracoes);
+        simplex(tabelaSimplex, baseSimplex.numIteracoes);
+        var sensibilidade = getSensibilityTable(tabelaSimplex);
 
         res.status(200).json({
-            resultado: result,
-            resultadoFinal: result.tableau,
-            z: `Z = ${result.tableau[0][0]}`
+            result: tabelaSimplex,
+            sensibilidade
         });
     } catch (error) {
-        res.status(418).json({
+        res.status(422).json({
             message: "O que vc tá fazendo?",
             erro: error.message
         })

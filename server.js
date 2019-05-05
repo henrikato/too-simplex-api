@@ -1,13 +1,11 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import { urlencoded, json } from 'body-parser';
 
 const app = express();
 
 //Configuração do server para usar o body-parser
-app.use(bodyParser.urlencoded({ extended: true }))
-    .use(bodyParser.json())
-    .set('view engine', 'ejs')
-    .set('views', config.TEMPLATES_FOLDER);
+app.use(urlencoded({ extended: true }))
+    .use(json());
 
 //Config
 import config from './src/config';
@@ -17,7 +15,7 @@ app.use((req, res, next) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin');
+    res.setHeader('Access-Control-Allow-Headers', '*');
 
     next();
 })
@@ -30,7 +28,7 @@ app.use(express.static('src'));
 app.use('/', Simplex);
 
 //Definindo a porta via arquivo de configuração JSON
-var port = config.PORT;
+var port = process.env.PORT || config.PORT;
 
 //Diz para a aplicação iniciar e escutar requisições na porta parametrizada
 app.listen(port, () => {

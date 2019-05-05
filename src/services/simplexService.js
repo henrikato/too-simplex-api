@@ -148,7 +148,7 @@ export const simplex = (tab, iteracoes) => {
         add_variaveis_nao_basicas(tab);
         passoapasso.push(createCopy(tab));
         do {
-            if(loop > 20) return false;
+            //if(loop > 20) return false;
             if (loop >= iteracoes) break;
 
             if (!tab.max) {
