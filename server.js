@@ -32,5 +32,6 @@ var port = process.env.PORT || config.PORT;
 
 //Diz para a aplicação iniciar e escutar requisições na porta parametrizada
 app.listen(port, () => {
+    console.clear();
     console.log(`Aplicação online na porta ${port}.`)
 })

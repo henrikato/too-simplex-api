@@ -21,7 +21,6 @@ export class Tableau {
 export const pivot_on = (tab, row, col) => {
     let i, j, pivot, a, multiplier;
     pivot = tab.tableau[row][col];
-    console.log("Encontrou pivot: " + pivot, " linha: ", row, " coluna: ", col);
     tab.labelColumn[row - 1] = tab.labelRow[col - 1];
 
     for (j = 0; j < tab.n; j++)
