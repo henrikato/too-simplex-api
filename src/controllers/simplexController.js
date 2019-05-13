@@ -3,6 +3,7 @@ import { parseVariaveis } from './../helpers/simplexHelper';
 import { simplex, getSensibilityTable } from '../services/simplexService';
 
 export const Post = async (req, res) => {
+
     if(req.body === null){
         res.status(422).json({
             mensagem: "Existem dados que não foram informados. Tente novamente mais tarde."

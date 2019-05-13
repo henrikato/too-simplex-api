@@ -14,8 +14,9 @@ import config from './src/config';
 app.use((req, res, next) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Content-type', 'application/json');
     res.setHeader('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin, content-type');
 
     next();
 })
