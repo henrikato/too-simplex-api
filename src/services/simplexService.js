@@ -42,7 +42,8 @@ export const find_pivot_column = tab => {
             lowest = tab.tableau[0][j];
             pivot_col = j;
         }
-    } if (lowest >= 0) {
+    }
+    if (lowest >= 0) {
         return -1;
     }
     return pivot_col;
@@ -59,7 +60,10 @@ export const find_pivot_row = (tab, pivot_col) => {
             }
         }
     }
-    return min_ratio == -1 ? -1 : pivot_row;
+    if(min_ratio == -1){
+        return -1;
+    }
+    return pivot_row;
 }
 export const add_variaveis_nao_basicas = tab => {
     let i, j, l;

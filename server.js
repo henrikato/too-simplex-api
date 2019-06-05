@@ -4,8 +4,7 @@ import { urlencoded, json } from 'body-parser';
 const app = express();
 
 //Configuração do server para usar o body-parser
-app.use(urlencoded({ extended: true }))
-    .use(json());
+app.use(urlencoded({ extended: true })).use(json());
 
 //Config
 import config from './src/config';
