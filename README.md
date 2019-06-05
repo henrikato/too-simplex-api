@@ -19,49 +19,49 @@ O algoritmo da mochila consiste em preencher a mochila com objetos diferentes de
 
 ## Nota de release a ser publicado
 
-###Simplex
+### Simplex
 
 - Algoritmo Simplex para problemas de maximização.
 - Algoritmo Simplex para problemas de minimização.
 - É exibido o passo a passo das tabelas geradas pelo método Simplex
 - Tabela de Sensibilidade.
 
-###Mochila
+### Mochila
 
 - Apreentação da solução, dos itens a serem considerados e a tabela de cálculo.
 
 
-##Entradas personalizadas para:
+## Entradas personalizadas para:
 
-###Simplex
+### Simplex
 
 - Limite máximo de iterações
 - Tipo de Simplex (MAX ou MIN)
 - Quantidade de variáveis e restrições
 - Apelido para as variávis
 
-###Mochila
+### Mochila
 - Capacidade da mochila
 - Peso e valor dos itens
 
-##Limitações
+## Limitações
 
 - Problemas sem solução ou com solução infinita não são detectados
 
-###Simplex
+### Simplex
 
 - Em cada variável da função objetivo e das restrições deve conter apenas o número, sem a adição do 'x'.	
 
 
-###Mochila
+### Mochila
 
 - Não utilizar itens com pesos iguais
 - Serão permitidos somente valores inteiros
 
 
-##Datas Importantes
+## Datas Importantes
 
-###Simplex
+### Simplex
 
 Datas | Eventos
 --------- | ------
@@ -75,14 +75,14 @@ Datas | Eventos
 14/05/19 | 6ª onda
 05/06/19 | Entrega do MVP 3
 
-##Compatibilidade
+## Compatibilidade
 
 Requisitos | Ferramentas
 --------- | ------
 Navegadores     | Mozila Firefox, Chrome, Internet Explorer
 Sistema Operacional    | Ubuntu, Windows, Mac, RedHat
 
-##Tecnologias
+## Tecnologias
 
 Tecnologias | Ferramentas
 --------- | ------
@@ -93,9 +93,9 @@ Editor de Texto  | Visual Studio Code
 Design pattern  |
 Servidor Web    | https://toosimplex-api.herokuapp.com/
 
-##Atividades Realizadas no Período
+## Atividades Realizadas no Período
 
-###Simplex
+### Simplex
 
 Código | Título | Tarefa | Situação | Observação
 --------- | ------ | -------| -------| -------
@@ -107,7 +107,7 @@ Código | Título | Tarefa | Situação | Observação
 6  | Tabela de sensibilidade | Demonstrar ao usuário a tabela de sensibilidade. |Concluído|
 7 | Apelido das variáveis | Dar apelido para as variáveis informadas no problema, para facilitar a leitura dos dados no resultado | Concluído |
 
-###Mochila
+### Mochila
 
 Código | Título | Tarefa | Situação | Observação
 --------- | ------ | -------| -------| -------
