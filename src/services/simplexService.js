@@ -21,7 +21,6 @@ export class Tableau {
 export const pivot_on = (tab, row, col) => {
     let i, j, pivot, a, multiplier;
     pivot = tab.tableau[row][col];
-    console.log("Encontrou pivot: " + pivot, " linha: ", row, " coluna: ", col);
     tab.labelColumn[row - 1] = tab.labelRow[col - 1];
 
     for (j = 0; j < tab.n; j++)
@@ -218,7 +217,7 @@ export const getSensibilityTable = final => {
     }
     // PREÇO SOMBRA
     for (let index = 0; index < sensibilityTable.labelColumn.length; index++) {
-        sensibilityTable.table[index][1] = "-";
+        sensibilityTable.table[index][1] = "0";
         if (sensibilityTable.labelColumn[index].match(/^f/)) {
             sensibilityTable.table[index][1] = final.tableau[0][(index + 1) % sensibilityTable.labelColumn.length];
         }
@@ -226,8 +225,8 @@ export const getSensibilityTable = final => {
     // Calcular + e - 
     let firstColumn = final.labelRow.indexOf("f1") + 1;
     for (let index = 0, total = sensibilityTable.labelColumn.length; index < total; index++) {
-        sensibilityTable.table[index][2] = "-";
-        sensibilityTable.table[index][3] = "-";
+        sensibilityTable.table[index][2] = "0";
+        sensibilityTable.table[index][3] = "0";
 
         if (index >= firstColumn && (total) > index) {
             let divide = final.tableau[1][0];

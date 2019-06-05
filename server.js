@@ -5,9 +5,13 @@ const app = express();
 
 //Configuração do server para usar o body-parser
 app.use(urlencoded({ extended: true }))
+<<<<<<< HEAD
     .use(json())
     .set('view engine', 'ejs')
     .set('views', config.TEMPLATES_FOLDER);
+=======
+    .use(json());
+>>>>>>> 7ee0ec6afdbed7c3ffa7d33b91e629ffaf1b31d4
 
 //Config
 import config from './src/config';
@@ -16,8 +20,13 @@ import config from './src/config';
 app.use((req, res, next) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Content-type', 'application/json');
     res.setHeader('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
+<<<<<<< HEAD
     res.setHeader('Access-Control-Allow-Headers', '*');
+=======
+    res.setHeader('Access-Control-Allow-Headers', 'access-control-allow-origin, content-type');
+>>>>>>> 7ee0ec6afdbed7c3ffa7d33b91e629ffaf1b31d4
 
     next();
 })
@@ -34,5 +43,6 @@ var port = process.env.PORT || config.PORT;
 
 //Diz para a aplicação iniciar e escutar requisições na porta parametrizada
 app.listen(port, () => {
+    console.clear();
     console.log(`Aplicação online na porta ${port}.`)
 })
