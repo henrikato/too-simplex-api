@@ -12,7 +12,7 @@ export const parseVariaveis = restricoes => {
             arr.push(variavel.valor)
         })
         valores.push(arr);
-        operadores.push("<=");
+        operadores.push(restricao.operador || "<=");
     })
 
     return { valores, operadores };

@@ -23,10 +23,11 @@ app.use((req, res, next) => {
 
 //Importa todos os routers da aplicação
 import Simplex from './src/routes/simplexRoute';
+import Mochila from './src/routes/mochilaRoute';
 app.use(express.static('src'));
 
 //Vincular a aplicação 'app' ao motor de rotas
-app.use('/', Simplex);
+app.use('/', Simplex, Mochila);
 
 //Definindo a porta via arquivo de configuração JSON
 var port = process.env.PORT || config.PORT;
