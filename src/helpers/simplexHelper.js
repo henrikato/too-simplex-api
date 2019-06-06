@@ -3,7 +3,7 @@ import * as lodash from 'lodash';
 export const parseVariaveis = restricoes => {
     var funcaoObjetiva = lodash.first(restricoes);
     funcaoObjetiva = lodash.map(funcaoObjetiva.variaveis, variavel => { variavel.valor = -variavel.valor; });
-    const valores = [];
+    const valores = [ [0] ];
     const operadores = [];
 
     lodash.map(restricoes, restricao => {
