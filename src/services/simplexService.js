@@ -60,10 +60,7 @@ export const find_pivot_row = (tab, pivot_col) => {
             }
         }
     }
-    if(min_ratio == -1){
-        return -1;
-    }
-    return pivot_row;
+    return min_ratio == -1 ? -1 : pivot_row;
 }
 export const add_variaveis_nao_basicas = tab => {
     let i, j, l;
