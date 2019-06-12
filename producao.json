@@ -1,0 +1,11 @@
+{
+	"apps": [
+		{
+			"name": "TooSimplex API",
+			"script": "/home/ubuntu/too-simplex/api/start.js",
+			"args": "--port 2001",
+			"exec_mode": "fork_mode",
+			"max_restarts": 999
+		}
+	]
+}
